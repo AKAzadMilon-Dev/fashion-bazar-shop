@@ -41,10 +41,17 @@ const ProductDetails = () => {
     }
 },[params.slug])
 
-// useContext dia store thakay data niya asa abong pathano.
 const {state, dispatch: contextDespatch} = useContext(Store)
+const {cart} = state
 
-let handleAddToCart = ()=>{
+let handleAddToCart = async ()=>{
+  const existingItem = cart.cartItems.find((item)=>item._id === product._id)
+  const quantity = existingItem ? existingItem.quantity +1 : 1
+  const {data} = await axios.get(`/products/${product._id}`)
+  if(data.inStock < quantity){
+    window.alert(`${product.name} out of stack`)
+    return
+  }
   contextDespatch({
     type: 'CART_ADD_ITEM',
     payload: {...product, quantity:1}
@@ -53,7 +60,6 @@ let handleAddToCart = ()=>{
 
   return (
     <div>
-      {/* {params.slug} */}
       <Container>
         <Helmet>
           <title>{product.name}</title>
@@ -85,7 +91,6 @@ let handleAddToCart = ()=>{
                 </ListGroup>
               </Card>
               <div className="d-grid gap-2 buttonStyle">
-              <Link to={`/addtocart/${product.slug}`} className="btn btn-primary" size="md">Add to cart</Link>
                 <Button onClick={handleAddToCart} variant="success" size="md">Add To Cart</Button>
               </div>
             </Col>

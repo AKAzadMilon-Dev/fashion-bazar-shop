@@ -11,7 +11,6 @@ app.get('/products', function (req, res) {
 })
 
 app.get('/products/:slug', function (req, res) {
-    // res.send(req.params)
     let product = data.find((item)=>{
         if(req.params.slug == item.slug){
             return item
@@ -20,10 +19,9 @@ app.get('/products/:slug', function (req, res) {
     res.send(product)
 })
 
-app.get('/addtocart/:slug', function (req, res) {
-    // res.send(req.params)
+app.get('/products/:id', function (req, res) {
     let product = data.find((item)=>{
-        if(req.params.slug == item.slug){
+        if(req.params.id == item._id){
             return item
         }
     })
