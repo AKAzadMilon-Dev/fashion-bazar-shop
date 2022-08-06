@@ -8,6 +8,7 @@ import ProductsPage from "./components/products/ProductsPage";
 import ProductDetails from "./components/products/ProductDetails";
 import AddToCart from "./components/products/AddToCart";
 import { Store } from "./Store";
+import CartPage from "./components/products/CartPage";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/product" element={<ProductsPage />} />
           <Route path="/product/:slug" element={<ProductDetails />} />
           <Route path="/addtocart/:slug" element={<AddToCart/>}></Route>
+          <Route path="/cartpage" element={<CartPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

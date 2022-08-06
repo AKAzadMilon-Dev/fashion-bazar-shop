@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import Rating from './Rating';
 import AddToCart from './AddToCart';
-import {Link} from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom'
 import { Store } from '../../Store';
 
 function reducer(state, action) {
@@ -22,6 +22,7 @@ function reducer(state, action) {
 }
 
 const ProductDetails = () => {
+  let navigate = useNavigate();
     let params = useParams();
 
     const [{loading, product, error}, dispatch] = useReducer(reducer,{
@@ -47,7 +48,7 @@ const {cart} = state
 let handleAddToCart = async ()=>{
   const existingItem = cart.cartItems.find((item)=>item._id === product._id)
   const quantity = existingItem ? existingItem.quantity +1 : 1
-  const {data} = await axios.get(`/products/${product._id}`)
+  const {data} = await axios.get(`/productcart/${product._id}`)
   if(data.inStock < quantity){
     window.alert(`${product.name} out of stack`)
     return
@@ -56,6 +57,7 @@ let handleAddToCart = async ()=>{
     type: 'CART_ADD_ITEM',
     payload: {...product, quantity:1}
   })
+  navigate(`/cartpage`);
 }
 
   return (

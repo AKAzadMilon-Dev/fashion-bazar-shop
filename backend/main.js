@@ -19,7 +19,7 @@ app.get('/products/:slug', function (req, res) {
     res.send(product)
 })
 
-app.get('/products/:id', function (req, res) {
+app.get('/productcart/:id', function (req, res) {
     let product = data.find((item)=>{
         if(req.params.id == item._id){
             return item
