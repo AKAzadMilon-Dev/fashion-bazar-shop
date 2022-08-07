@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { Col, Container, Row, Table, Alert, ListGroup } from 'react-bootstrap'
+import { Col, Container, Row, Table, Alert, ListGroup, Button } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
 import { Store } from '../../Store'
 import { Link, useNavigate  } from 'react-router-dom'
-import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+import { AiFillCaretRight, AiFillCaretLeft, AiFillDelete } from "react-icons/ai";
 
 const CartPage = () => {
     
@@ -49,10 +49,21 @@ const CartPage = () => {
                                             <td>
                                                 <img width="50" src={item.img}></img>
                                             </td>
-                                            <td>Table cell</td>
-                                            <td><AiFillCaretLeft/>1<AiFillCaretRight/></td>
-                                            <td>Table cell</td>
-                                            <td>Table cell</td>
+                                            <td>
+                                                $ {item.price}
+                                            </td>
+                                            <td>
+                                                <Button disabled={item.quantity == item.inStock} className='incriButton' variant="gray"><AiFillCaretLeft/></Button>
+                                                <span>{item.quantity}</span>
+                                                <Button disabled={item.quantity === 1} className='incriButton' variant="gray"><AiFillCaretRight/></Button>
+                                                
+                                            </td>
+                                            <td>{item.inStock}</td>
+                                            <td>
+                                            <Button className='deleteButton' variant="gray">
+                                                    <AiFillDelete className='deleteIcon'></AiFillDelete>
+                                            </Button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 ))}

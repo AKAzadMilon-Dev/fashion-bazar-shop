@@ -108,6 +108,22 @@ a{
     border: 2px solid #c9c8c8;
     margin-top: 30px;
 }
+
+.incriButton{
+    background: #f6f5f5;
+    color: rgb(40, 211, 214);
+}
+
+.deleteIcon{
+    color: red;
+    width: 30px;
+    height: 30px;
+}
+
+.deleteButton{
+    background: #fbfbfb;
+    border: none;
+}
 /* Add to cart Page End */
 
 .pagination{
