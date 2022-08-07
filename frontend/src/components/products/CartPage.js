@@ -12,10 +12,16 @@ const CartPage = () => {
     const {cart:{cartItems}} = state
 
     const updateQuantity = (item, quantity)=>{
-        console.log(quantity)
         dispatch({
             type: 'CART_ADD_ITEM',
             payload: {...item, quantity}
+        })
+    }
+
+    const handleRemoveItem = (item)=>{
+        dispatch({
+            type: 'CART_REMOVE_ITEM',
+            payload: item
         })
     }
 
@@ -68,14 +74,13 @@ const CartPage = () => {
                                             </td>
                                             <td>{item.inStock}</td>
                                             <td>
-                                            <Button className='deleteButton' variant="gray">
-                                                    <AiFillDelete className='deleteIcon'></AiFillDelete>
+                                            <Button onClick={()=>handleRemoveItem(item)} className='deleteButton' variant="gray">
+                                                <AiFillDelete className='deleteIcon'></AiFillDelete>
                                             </Button>
                                             </td>
                                         </tr>
                                     </tbody>
                                 ))}
-                                
                             </Table>
                         </ListGroup>
                         
