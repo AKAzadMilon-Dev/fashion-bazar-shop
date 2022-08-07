@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Col, Container, Row, Table, Alert, ListGroup, Button } from 'react-bootstrap'
+import { Col, Container, Row, Table, Alert, ListGroup, Button, Card } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
 import { Store } from '../../Store'
 import { Link, useNavigate  } from 'react-router-dom'
@@ -73,6 +73,15 @@ const CartPage = () => {
                         
                     }
                     
+                </Col>
+                <Col lg={4}>
+                    <Card className='listStyle'>
+                        <Card.Body>
+                            <h2>Total ({cartItems.reduce((accumulator,current)=> accumulator + current.quantity, 0)}) Products</h2>
+                            <h4>Price $ {cartItems.reduce((accumulator,current)=> accumulator + current.price * current.quantity, 0)}</h4>
+                            <Button className='w-100' variant='success'>Check Out</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
             </Row>
 
