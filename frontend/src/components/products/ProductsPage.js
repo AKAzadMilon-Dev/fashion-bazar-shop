@@ -5,6 +5,7 @@ import { SpinnerDiamond } from 'spinners-react';
 import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
 import Rating from './Rating';
 import { Helmet } from 'react-helmet-async';
+import Pagination from './Pagination';
 
 
 function reducer(state, action) {
@@ -53,28 +54,8 @@ const ProductsPage = () => {
                     <SpinnerDiamond size={69} thickness={137} speed={100} color="rgba(65, 172, 57, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" />
                 </div>
                 :
-                product.map(item=>(
-                    <Col lg={3}>
-                        <Card className="cardTitle">
-                            <div className='imghidden'>
-                                <Card.Img className='img' variant="top" src={item.img} alt={item.img} />
-                            </div>
-                            <Card.Body>
-                                <Card.Title>
-                                    <Link to={`/product/${item.slug}`}>{item.name}</Link>
-                                </Card.Title>
-                                <Card.Text>
-                                    <Rating rating={item.rating} ratingNumber={item.ratingNumber}/>
-                                </Card.Text>
-                                <Card.Text><h6>Price = $ {item.price}</h6></Card.Text>
-                                <Card.Text>{item.description}</Card.Text>
-                            </Card.Body>
-                            <Card.Footer>
-                            <Link to="/addtocart" className="btn btn-primary" size="md">Add to cart</Link>
-                            </Card.Footer>
-                        </Card>
-                    </Col>
-                ))}
+                    <Pagination itemsPerPage={8} product={product}></Pagination>
+                }
             </Row>
         </Container>
     </>

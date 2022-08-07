@@ -19,7 +19,7 @@ a{
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(32, 32, 32, 0.3);
+    background: #3a3a3a4d;
 }
 
 .carouselInner{
@@ -109,3 +109,25 @@ a{
     margin-top: 30px;
 }
 /* Add to cart Page End */
+
+.pagination{
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    width: 100%;
+}
+
+.contact{
+    background: #000000df;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.headerContact{
+    text-align: center;
+    color: rgb(218, 218, 218);
+}
+
+.footerList{
+    border: none;
+}

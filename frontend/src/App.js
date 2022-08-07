@@ -9,6 +9,8 @@ import ProductDetails from "./components/products/ProductDetails";
 import AddToCart from "./components/products/AddToCart";
 import { Store } from "./Store";
 import CartPage from "./components/products/CartPage";
+import Contact from "./components/contact/Contact";
+import Footer from "./components/footer/Footer";
 
 function App() {
 
@@ -43,6 +45,8 @@ function App() {
           <Route path="/product/:slug" element={<ProductDetails />} />
           <Route path="/addtocart/:slug" element={<AddToCart/>}></Route>
           <Route path="/cartpage" element={<CartPage/>}></Route>
+          <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="/footer" element={<Footer/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
