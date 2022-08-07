@@ -11,6 +11,14 @@ const CartPage = () => {
     const {state, dispatch} = useContext(Store)
     const {cart:{cartItems}} = state
 
+    const updateQuantity = (item, quantity)=>{
+        console.log(quantity)
+        dispatch({
+            type: 'CART_ADD_ITEM',
+            payload: {...item, quantity}
+        })
+    }
+
   return (
     <>
         <Helmet>
@@ -53,9 +61,9 @@ const CartPage = () => {
                                                 $ {item.price}
                                             </td>
                                             <td>
-                                                <Button disabled={item.quantity == item.inStock} className='incriButton' variant="gray"><AiFillCaretLeft/></Button>
+                                                <Button onClick={()=>updateQuantity(item, item.quantity+1)} disabled={item.quantity == item.inStock} className='incriButton' variant="gray"><AiFillCaretLeft/></Button>
                                                 <span>{item.quantity}</span>
-                                                <Button disabled={item.quantity === 1} className='incriButton' variant="gray"><AiFillCaretRight/></Button>
+                                                <Button onClick={()=>updateQuantity(item, item.quantity-1)} disabled={item.quantity === 1} className='incriButton' variant="gray"><AiFillCaretRight/></Button>
                                                 
                                             </td>
                                             <td>{item.inStock}</td>
