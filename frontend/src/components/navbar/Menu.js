@@ -22,14 +22,10 @@ const Menu = () => {
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/product">Product</Link>
-          <Link onClick={handleShow} to="/cartpage">
-            <FaShoppingCart className="shoppingCart"/>
-            {state.cart.cartItems.length > 0 && (
-              <Badge pill bg="success">
-              {state.cart.cartItems.length}
-              </Badge>
-            )}
-          </Link>
+
+          <FaShoppingCart onClick={handleShow} className="shoppingCart"/>
+          {state.cart.cartItems.length > 0 && (<Badge className="badgeStyle" pill bg="success">{state.cart.cartItems.length}</Badge>)}
+          
         </Nav>
         </Container>
       </Navbar>
@@ -39,8 +35,11 @@ const Menu = () => {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <Link onClick={handleShow} to="/cartpage">
+            <div>
+              <Button className='w-100' variant="success">Go to cart</Button>
+            </div>
+          </Link>
         </Offcanvas.Body>
       </Offcanvas>
     </>

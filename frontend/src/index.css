@@ -124,6 +124,18 @@ a{
     background: #fbfbfb;
     border: none;
 }
+
+.shoppingCart{
+    color: rgb(99, 99, 99);
+    margin-left: 30px;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.badgeStyle{
+    color: #ffffff;
+    border-radius: 50%;
+}
 /* Add to cart Page End */
 
 .pagination{
