@@ -4,7 +4,7 @@ import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import Rating from './Rating';
 
-const Pagination = ({ itemsPerPage, product }) => {
+const Pagination = ({ itemsPerPage, product, handelAddToCart }) => {
     // We start with an empty list of items.
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
@@ -38,9 +38,9 @@ const Pagination = ({ itemsPerPage, product }) => {
                                 <Card.Text><h6>Price = $ {item.price}</h6></Card.Text>
                                 <Card.Text>{item.description}</Card.Text>
                             </Card.Body>
-                            {/* <Card.Footer> */}
-                            <Link to="/addtocart" className="btn btn-success w-100" size="md">Add to cart</Link>
-                            {/* </Card.Footer> */}
+                            <div className="d-grid gap-2 buttonStyle">
+                                <Button onClick={()=>handelAddToCart(item)} variant="success" size="md">Add To Cart</Button>
+                            </div>
                         </Card>
                     </Col>
               ))}

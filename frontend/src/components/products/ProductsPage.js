@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, {useState, useEffect, useReducer, useContext} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import { SpinnerDiamond } from 'spinners-react';
@@ -6,6 +6,8 @@ import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
 import Rating from './Rating';
 import { Helmet } from 'react-helmet-async';
 import Pagination from './Pagination';
+import { useNavigate } from 'react-router-dom'
+import { Store } from '../../Store';
 
 
 function reducer(state, action) {
@@ -39,6 +41,23 @@ const ProductsPage = () => {
         }
     },[])
 
+    const {state, dispatch: contextDespatch} = useContext(Store)
+    const {cart} = state
+
+    let handelAddToCart = async (product)=>{
+    const existingItem = cart.cartItems.find((item)=>item._id === product._id)
+    const quantity = existingItem ? existingItem.quantity +1 : 1
+    const {data} = await axios.get(`/productcart/${product._id}`)
+    if(data.inStock < quantity){
+        window.alert(`${product.name} out of stack`)
+        return
+    }
+        contextDespatch({
+        type: 'CART_ADD_ITEM',
+        payload: {...product, quantity:1}
+        })
+    }
+
   return (
     <>
         <Container>
@@ -54,7 +73,7 @@ const ProductsPage = () => {
                     <SpinnerDiamond size={69} thickness={137} speed={100} color="rgba(65, 172, 57, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" />
                 </div>
                 :
-                    <Pagination itemsPerPage={8} product={product}></Pagination>
+                    <Pagination itemsPerPage={8} product={product} handelAddToCart={handelAddToCart}></Pagination>
                 }
             </Row>
         </Container>

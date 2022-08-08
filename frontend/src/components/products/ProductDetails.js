@@ -44,7 +44,7 @@ const ProductDetails = () => {
 const {state, dispatch: contextDespatch} = useContext(Store)
 const {cart} = state
 
-let handleAddToCart = async ()=>{
+let handelAddToCart = async ()=>{
   const existingItem = cart.cartItems.find((item)=>item._id === product._id)
   const quantity = existingItem ? existingItem.quantity +1 : 1
   const {data} = await axios.get(`/productcart/${product._id}`)
@@ -92,7 +92,7 @@ let handleAddToCart = async ()=>{
                 </ListGroup>
               </Card>
               <div className="d-grid gap-2 buttonStyle">
-                <Button onClick={handleAddToCart} variant="success" size="md">Add To Cart</Button>
+                <Button onClick={handelAddToCart} variant="success" size="md">Add To Cart</Button>
               </div>
             </Col>
           </>
