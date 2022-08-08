@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useReducer, useContext} from 'react';
+import React, {useEffect, useReducer, useContext} from 'react';
 import { Col, Container, Row, Card, ListGroup, Badge, Button, Alert } from 'react-bootstrap'
 import { useParams } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import Rating from './Rating';
-import AddToCart from './AddToCart';
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Store } from '../../Store';
 
 function reducer(state, action) {
@@ -57,7 +56,7 @@ let handleAddToCart = async ()=>{
     type: 'CART_ADD_ITEM',
     payload: {...product, quantity:1}
   })
-  navigate(`/cartpage`);
+  navigate(`/product`);
 }
 
   return (

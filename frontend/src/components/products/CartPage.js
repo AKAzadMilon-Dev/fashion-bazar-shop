@@ -7,7 +7,6 @@ import { AiFillCaretRight, AiFillCaretLeft, AiFillDelete } from "react-icons/ai"
 
 const CartPage = () => {
     
-
     const {state, dispatch} = useContext(Store)
     const {cart:{cartItems}} = state
 
@@ -84,8 +83,7 @@ const CartPage = () => {
                             </Table>
                         </ListGroup>
                         
-                    }
-                    
+                    } 
                 </Col>
                 <Col lg={4}>
                     <Card className='listStyle'>
