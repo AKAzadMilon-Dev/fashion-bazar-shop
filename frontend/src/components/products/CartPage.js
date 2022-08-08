@@ -57,7 +57,7 @@ const CartPage = () => {
                                         <tr>
                                             <td>1</td>
                                             <td>
-                                                <Link to={`/products/${item.slug}`}>{item.name}</Link>
+                                                <Link to={`/product/${item.slug}`}>{item.name}</Link>
                                             </td>
                                             <td>
                                                 <img width="50" src={item.img}></img>

@@ -56,7 +56,7 @@ let handelAddToCart = async ()=>{
     type: 'CART_ADD_ITEM',
     payload: {...product, quantity:1}
   })
-  navigate(`/product`);
+  navigate(`/cartpage`);
 }
 
   return (

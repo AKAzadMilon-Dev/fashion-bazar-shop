@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
+import { Col, Card, Button, Badge } from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import Rating from './Rating';
 
@@ -38,9 +38,14 @@ const Pagination = ({ itemsPerPage, product, handelAddToCart }) => {
                                 <Card.Text><h6>Price = $ {item.price}</h6></Card.Text>
                                 <Card.Text>{item.description}</Card.Text>
                             </Card.Body>
+                            {item.inStock == 0
+                            ?
+                            <Badge bg="danger">Out of Stock</Badge>
+                            :
                             <div className="d-grid gap-2 buttonStyle">
                                 <Button onClick={()=>handelAddToCart(item)} variant="success" size="md">Add To Cart</Button>
                             </div>
+                            }
                         </Card>
                     </Col>
               ))}

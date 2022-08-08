@@ -19,7 +19,7 @@ const data = [
         price:"55",
         rating:"4.5",
         ratingNumber:"130",
-        inStock:"100"
+        inStock:"0"
     },
     {
         _id:3,
@@ -52,7 +52,7 @@ const data = [
         price:"55",
         rating:"5",
         ratingNumber:"90",
-        inStock:"55"
+        inStock:"0"
     },
     {
         _id:6,
@@ -85,7 +85,7 @@ const data = [
         price:"55",
         rating:"3.5",
         ratingNumber:"120",
-        inStock:"22"
+        inStock:"0"
     },
     {
         _id:9,
