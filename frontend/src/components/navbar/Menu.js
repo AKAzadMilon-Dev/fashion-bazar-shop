@@ -58,29 +58,6 @@ const Menu = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        {/* <Container>
-          <Row>
-            <Col lg={3}>
-              <Navbar.Brand href="#home">Fashion BAZAR</Navbar.Brand>
-            </Col>
-            <Col lg={6} className='navmenuItem'>
-              <Nav className="ms-auto navMenu">
-                <Link to="/">Home</Link>
-                <Link to="/shop">Shop</Link>
-                <Link to="/product">Product</Link>
-                <FaShoppingCart onClick={handleShow} className="shoppingCart"/>
-                {state.cart.cartItems.length > 0 && (<Badge className="badgeStyle" pill bg="success">{state.cart.cartItems.length}</Badge>)}
-              </Nav>
-            </Col>
-            <Col lg={3} className='menuLogin'>
-              <Nav className="ms-auto navMenu">
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-              </Nav>
-            </Col>
-          </Row>
-          
-        </Container> */}
       </Navbar>
       {/* Offcanvaus */}
       <Offcanvas show={show} onHide={handleClose} placement="end">

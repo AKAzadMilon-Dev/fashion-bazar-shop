@@ -2,7 +2,6 @@ a{
     text-decoration: none;
 }
 
-
 /* Navbar part start */
 .navMenu a{
     margin-left: 30px;
@@ -76,6 +75,28 @@ a{
     color: #FF8E00;
     background: #000 ! important;
 }
+
+.proButton{
+    margin-right: 82px;
+    background: #ffb300;
+    border: none;
+}
+
+.proButton:hover{
+    background: #ff8400;
+    color: #00fbff;
+}
+
+.viewButton{
+    background: #ffb300;
+    border: none;
+}
+
+.viewButton:hover{
+    background: #ff8400;
+    color: #00fbff;
+}
+
 /* Product Part End */
 
 /* Product Details Start */
@@ -107,6 +128,15 @@ a{
 .alert{
     text-align: center;
 }
+
+.detailsButton{
+    background: #ffb300;
+    border: none;
+}
+.detailsButton:hover{
+    background: #ff8400;
+    color: #00fbff;
+}
 /* Product Details End */
 
 /* Add to cart Page Start */
@@ -132,7 +162,7 @@ a{
 }
 
 .shoppingCart{
-    color: #ffc400;
+    color: #ffb300;
     margin-left: 30px;
     font-size: 20px;
     margin-top: 4px;
@@ -141,6 +171,17 @@ a{
 .badgeStyle{
     color: #ffffff;
     border-radius: 50%;
+}
+
+.checkButton{
+    width: 100%;
+    background: #ffb300;
+    border: none;
+}
+
+.checkButton:hover{
+    background: #ff8400;
+    color: #00fbff;
 }
 /* Add to cart Page End */
 
@@ -155,7 +196,7 @@ a{
     border: 1px solid #dadada;
     border-radius: 5px;
     padding: 15px;
-    margin-top: 140px;
+    margin-top: 100px;
 }
 
 .loginAlert{
@@ -166,8 +207,13 @@ a{
 
 .loginButton{
     width: 100%;
-    color: #fff;
+    background: #ffb300;
+    border: none;
+}
 
+.loginButton:hover{
+    background: #ff8400;
+    color: #00fbff;
 }
 /* Login Page End */
 

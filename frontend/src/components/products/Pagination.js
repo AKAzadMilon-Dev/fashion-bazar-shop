@@ -4,12 +4,9 @@ import { Col, Card, Button, Badge } from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import Rating from './Rating';
 
-const Pagination = ({ itemsPerPage, product, handelAddToCart }) => {
-    // We start with an empty list of items.
+const Pagination = ({ itemsPerPage, product, handelAddToCart, setLgShow }) => {
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
     const [itemOffset, setItemOffset] = useState(0);
 
     const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
@@ -42,8 +39,9 @@ const Pagination = ({ itemsPerPage, product, handelAddToCart }) => {
                             ?
                             <Badge bg="danger">Out of Stock</Badge>
                             :
-                            <div className="d-grid gap-2 buttonStyle">
-                                <Button onClick={()=>handelAddToCart(item)} variant="success" size="md">Add To Cart</Button>
+                            <div className="gap-5 buttonStyle">
+                                <Button className='proButton' onClick={()=>handelAddToCart(item)} variant="success" size="md">Add To Cart</Button>
+                                <Button className='viewButton' onClick={()=>setLgShow(true)} variant="success">View Details</Button>
                             </div>
                             }
                         </Card>

@@ -1,12 +1,9 @@
 import React, {useState, useEffect, useReducer, useContext} from 'react';
-import {Link} from "react-router-dom";
 import axios from 'axios';
 import { SpinnerDiamond } from 'spinners-react';
-import { Col, Container, Row, Card, Dropdown, Button } from 'react-bootstrap';
-import Rating from './Rating';
+import { Container, Row, Dropdown, Modal } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import Pagination from './Pagination';
-import { useNavigate } from 'react-router-dom'
 import { Store } from '../../Store';
 
 
@@ -24,7 +21,7 @@ function reducer(state, action) {
   }
 
 const ProductsPage = () => {
-
+    const [lgShow, setLgShow] = useState(false);
     const [{loading, error, product}, dispatch] = useReducer(reducer, {
         loading:false,
         error:'',
@@ -48,6 +45,7 @@ const ProductsPage = () => {
     const existingItem = cart.cartItems.find((item)=>item._id === product._id)
     const quantity = existingItem ? existingItem.quantity +1 : 1
     const {data} = await axios.get(`/productcart/${product._id}`)
+
     if(data.inStock < quantity){
         window.alert(`${product.name} out of stack`)
         return
@@ -58,27 +56,41 @@ const ProductsPage = () => {
         })
     }
 
-  return (
-    <>
-        <Container>
-        <Helmet>
-          <title>Product Page</title>
-        </Helmet>
-            <Row>
-                <Dropdown.Header className='header'>
-                    <h3>Editor's Pick</h3>
-                </Dropdown.Header>
-                { loading ?
-                <div className='loading'>
-                    <SpinnerDiamond size={69} thickness={137} speed={100} color="rgba(65, 172, 57, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" />
-                </div>
-                :
-                    <Pagination itemsPerPage={8} product={product} handelAddToCart={handelAddToCart}></Pagination>
-                }
-            </Row>
-        </Container>
-    </>
-  );
+    return (
+        <>
+            <Container>
+            <Helmet>
+            <title>Product Page</title>
+            </Helmet>
+                <Row>
+                    <Dropdown.Header className='header'>
+                        <h3>Editor's Pick</h3>
+                    </Dropdown.Header>
+                    { loading ?
+                    <div className='loading'>
+                        <SpinnerDiamond size={69} thickness={137} speed={100} color="rgba(65, 172, 57, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" />
+                    </div>
+                    :
+                        <Pagination itemsPerPage={8} product={product} handelAddToCart={handelAddToCart} setLgShow={setLgShow}></Pagination>
+                    }
+                </Row>
+                {/* Modal */}
+                <Modal
+                    size="lg"
+                    show={lgShow}
+                    onHide={() => setLgShow(false)}
+                    aria-labelledby="example-modal-sizes-title-lg"
+                >
+                    <Modal.Header closeButton>
+                    <Modal.Title id="example-modal-sizes-title-lg">
+                        Large Modal
+                    </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>...</Modal.Body>
+                </Modal>
+            </Container>
+        </>
+    );
 };
 
 export default ProductsPage;

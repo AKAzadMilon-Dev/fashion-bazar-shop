@@ -96,7 +96,7 @@ const CartPage = () => {
                         <Card.Body>
                             <h2>Total ({cartItems.reduce((accumulator,current)=> accumulator + current.quantity, 0)}) Products</h2>
                             <h4>Price $ {cartItems.reduce((accumulator,current)=> accumulator + current.price * current.quantity, 0)}</h4>
-                            <Button onClick={handleCheckOut} className='w-100' variant='success'>Check Out</Button>
+                            <Button onClick={handleCheckOut} className='checkButton'>Check Out</Button>
                         </Card.Body>
                     </Card>
                 </Col>

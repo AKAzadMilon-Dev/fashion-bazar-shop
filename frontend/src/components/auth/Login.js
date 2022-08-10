@@ -12,6 +12,9 @@ const Login = () => {
                 <Row>
                     <Col lg={4}>
                         <Form className='formStyle'>
+                            <Alert>
+                                <h3>LOGIN</h3>
+                            </Alert>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" />
@@ -25,7 +28,7 @@ const Login = () => {
                                 <Form.Control type="password" placeholder="Password" />
                             </Form.Group>
 
-                            <Button className='loginButton' variant="warning" type="submit">Login</Button>
+                            <Button className='loginButton' type="submit">Login</Button>
                             <Alert className='loginAlert'>
                                 Don't have an account? <Link to={`/register?redirect=${redirect}`}>Create Registration</Link>
                             </Alert>

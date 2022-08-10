@@ -92,7 +92,7 @@ let handelAddToCart = async ()=>{
                 </ListGroup>
               </Card>
               <div className="d-grid gap-2 buttonStyle">
-                <Button onClick={handelAddToCart} variant="success" size="md">Add To Cart</Button>
+                <Button className='detailsButton' onClick={handelAddToCart} size="md">Add To Cart</Button>
               </div>
             </Col>
           </>
