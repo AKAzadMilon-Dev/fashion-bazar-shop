@@ -4,7 +4,7 @@ import { Col, Card, Button, Badge } from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import Rating from './Rating';
 
-const Pagination = ({ itemsPerPage, product, handelAddToCart, setLgShow }) => {
+const Pagination = ({ itemsPerPage, product, handelAddToCart, handleProductDetails }) => {
     const [currentItems, setCurrentItems] = useState(null);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -41,7 +41,7 @@ const Pagination = ({ itemsPerPage, product, handelAddToCart, setLgShow }) => {
                             :
                             <div className="gap-5 buttonStyle">
                                 <Button className='proButton' onClick={()=>handelAddToCart(item)} variant="success" size="md">Add To Cart</Button>
-                                <Button className='viewButton' onClick={()=>setLgShow(true)} variant="success">View Details</Button>
+                                <Button className='viewButton' onClick={()=>handleProductDetails(item.slug)}>View Details</Button>
                             </div>
                             }
                         </Card>

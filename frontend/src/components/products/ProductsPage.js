@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useReducer, useContext} from 'react';
 import axios from 'axios';
 import { SpinnerDiamond } from 'spinners-react';
-import { Container, Row, Dropdown, Modal } from 'react-bootstrap';
+import { Container, Row, Dropdown, Modal, Card, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import Pagination from './Pagination';
 import { Store } from '../../Store';
+import Rating from './Rating';
 
 
 function reducer(state, action) {
@@ -22,6 +23,8 @@ function reducer(state, action) {
 
 const ProductsPage = () => {
     const [lgShow, setLgShow] = useState(false);
+    const [details, setDetails] = useState({});
+
     const [{loading, error, product}, dispatch] = useReducer(reducer, {
         loading:false,
         error:'',
@@ -56,6 +59,12 @@ const ProductsPage = () => {
         })
     }
 
+    const handleProductDetails = async (proDetails)=>{
+        setLgShow(true)
+        const productDetails = await axios.get(`/products/${proDetails}`)
+        setDetails(productDetails.data)
+    }
+
     return (
         <>
             <Container>
@@ -71,7 +80,7 @@ const ProductsPage = () => {
                         <SpinnerDiamond size={69} thickness={137} speed={100} color="rgba(65, 172, 57, 1)" secondaryColor="rgba(0, 0, 0, 0.44)" />
                     </div>
                     :
-                        <Pagination itemsPerPage={8} product={product} handelAddToCart={handelAddToCart} setLgShow={setLgShow}></Pagination>
+                        <Pagination itemsPerPage={8} product={product} handelAddToCart={handelAddToCart} handleProductDetails={handleProductDetails}></Pagination>
                     }
                 </Row>
                 {/* Modal */}
@@ -81,12 +90,26 @@ const ProductsPage = () => {
                     onHide={() => setLgShow(false)}
                     aria-labelledby="example-modal-sizes-title-lg"
                 >
-                    <Modal.Header closeButton>
-                    <Modal.Title id="example-modal-sizes-title-lg">
-                        Large Modal
-                    </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>...</Modal.Body>
+                    <Modal.Header closeButton>Product Details</Modal.Header >
+                    <Modal.Body >
+                        {details
+                        ?
+                        <Card className="text-center">
+                            <Card.Img variant="top" src={details.img} />
+                            <Card.Body>
+                                <Card.Title>{details.name}</Card.Title>
+                                <Card.Text>{details.description}</Card.Text>
+                                <Card.Text>
+                                    <Rating rating={details.rating} ratingNumber={details.ratingNumber}/>
+                                </Card.Text>
+                                <Card.Text> Price ${details.price}</Card.Text>
+                                <Button onClick={()=>handelAddToCart(details)} variant="primary">Add To Cart</Button>
+                            </Card.Body>
+                        </Card>
+                        :
+                        <h3>Product Details is not avialable</h3>
+                        }
+                    </Modal.Body>
                 </Modal>
             </Container>
         </>
