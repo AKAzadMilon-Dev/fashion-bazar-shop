@@ -6,6 +6,8 @@ import { Link, useNavigate  } from 'react-router-dom'
 import { AiFillCaretRight, AiFillCaretLeft, AiFillDelete } from "react-icons/ai";
 
 const CartPage = () => {
+
+    let navigate = useNavigate();
     
     const {state, dispatch} = useContext(Store)
     const {cart:{cartItems}} = state
@@ -22,6 +24,10 @@ const CartPage = () => {
             type: 'CART_REMOVE_ITEM',
             payload: item
         })
+    }
+
+    const handleCheckOut = ()=>{
+        navigate('/login?redirect=/checkout')
     }
 
   return (
@@ -90,7 +96,7 @@ const CartPage = () => {
                         <Card.Body>
                             <h2>Total ({cartItems.reduce((accumulator,current)=> accumulator + current.quantity, 0)}) Products</h2>
                             <h4>Price $ {cartItems.reduce((accumulator,current)=> accumulator + current.price * current.quantity, 0)}</h4>
-                            <Button className='w-100' variant='success'>Check Out</Button>
+                            <Button onClick={handleCheckOut} className='w-100' variant='success'>Check Out</Button>
                         </Card.Body>
                     </Card>
                 </Col>

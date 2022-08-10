@@ -9,6 +9,8 @@ import CartPage from "./components/products/CartPage";
 import Contact from "./components/contact/Contact";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/navbar/Menu";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register"
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/product/:slug" element={<ProductDetails />} />
           <Route path="/addtocart/:slug" element={<AddToCart/>}></Route>
           <Route path="/cartpage" element={<CartPage/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
           <Route path="/contact" element={<Contact/>}></Route>
           <Route path="/footer" element={<Footer/>}></Route>
         </Routes>
